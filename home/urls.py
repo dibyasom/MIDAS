@@ -18,6 +18,6 @@ from django.urls import path, include
 from home import views
 
 urlpatterns = [
-    path("<str:uniquename>", views.render_landing_page),
+    # path("<str:uniquename>", views.render_landing_page),
     path("", views.render_latest_conference),
 ]
