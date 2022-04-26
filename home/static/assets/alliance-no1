@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Alliance No.1';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Alliance No.1'), url('https://fonts.cdnfonts.com/s/19563/Degarism Studio - Alliance No.1 Light.woff') format('woff');
+}
+@font-face {
+    font-family: 'Alliance No.2';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Alliance No.2'), url('https://fonts.cdnfonts.com/s/19563/Degarism Studio - Alliance No.2 Light.woff') format('woff');
+}
+
+

@@ -1,0 +1,89 @@
+<!-- Load all static content -->
+{% load static %}
+
+<!-- Load navbar dropdown stylesheet -->
+<link rel="stylesheet" href="{% static '/css/dropdown-navbar.css' %}">
+
+<div class="d-none d-md-block py-2 color-bg-emphasis" style="background-color: black; color: white;">
+    <div class="container-lg">
+        <div class="container-xl p-responsive d-flex flex-md-justify-between">
+            <!-- <div class="container-lg clearfix pt-6"> -->
+            <a class="d-block color-fg-on-emphasis no-underline" style="color: white; text-decoration: none;"
+                href="">{{conference.title}}</a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><span><img src="/media/{{conference.venue.university_logo}}" alt="{{conference.venue}} logo" srcset="" height="40px"></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li href="/timeline" class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark"
+                        href="/timeline">Home</a>
+                </li>
+
+                <li href="/about" class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark"
+                        href="/about">About Us</a>
+                </li>
+
+                <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a href="/organisations"
+                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Speakers</a>
+                </li>
+
+                <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a href="/organisations"
+                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Important
+                        Dates</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Committees
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Steering Committee</a></li>
+                      <li><a class="dropdown-item" href="#">Organizing Committee</a></li>
+                      <li><a class="dropdown-item" href="#">Technical Program Committee</a></li>
+                      <li><a class="dropdown-item" href="#">National Committee</a></li>
+                      <li><a class="dropdown-item" href="#">International Committee</a></li>
+                      <li><a class="dropdown-item" href="#">Student Organizing Committee</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">More joining us soon</a></li>
+                    </ul>
+                  </li>
+
+                <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a href="/organisations"
+                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Registration</a>
+                </li>
+
+                <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a href="/organisations"
+                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Call For
+                        Papers</a>
+                </li>
+
+                <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a href="/organisations"
+                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Special
+                        Session(s)</a>
+                </li>
+
+                <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
+                    <a href="/organisations"
+                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Partners</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,632 @@
+/*
+This file is used to contain all abstracts imports.
+Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
+*/
+
+/*
+This file is used to contain all base imports.
+Files inside this folder can contain global styles used in the project.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Teko:wght@300;400;500&display=swap");
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  color: inherit;
+  text-decoration: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  color: #435464;
+}
+
+h1 {
+  font-size: 3.25rem;
+  line-height: 4rem;
+  letter-spacing: -1.6px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  letter-spacing: -0.2px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  letter-spacing: 0px;
+  color: #435464;
+}
+
+h4,
+p,
+li {
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 147%;
+  color: #435464;
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 135%;
+  font-weight: 500;
+  color: #435464;
+}
+
+p,
+li {
+  font-size: 16px;
+  line-height: 141.5%;
+  color: #69768A;
+}
+
+:-ms-input-placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: initial;
+  letter-spacing: 1px;
+  color: #888888;
+}
+
+::-moz-placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: initial;
+  letter-spacing: 1px;
+  color: #888888;
+}
+
+::placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: initial;
+  letter-spacing: 1px;
+  color: #888888;
+}
+
+nav {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: initial;
+  letter-spacing: 0.1px;
+  color: #006BD1;
+}
+
+.user-name {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 147%;
+  letter-spacing: 0px;
+}
+
+.user-undersign {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 147%;
+  letter-spacing: 0.2px;
+}
+
+.secondary-title {
+  font-family: "Teko", sans-serif;
+  font-weight: 400;
+  letter-spacing: -2px;
+  background: linear-gradient(to right, #EB7406, #CD00D1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-color-primary {
+  color: #006BD1;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-thickness: 0.15em;
+}
+
+/* Additonal Base Stylesheets */
+
+/*
+This file is used to contain all component imports.
+Files inside this folder should contain all styles relating to a reusable component.
+*/
+
+.open-link::after {
+  content: '\2197';
+}
+
+.filter hr {
+  border-image-source: none;
+  border-color: #ececec;
+  border-width: 0.25px;
+}
+
+/*
+This file is used to contain all component imports.
+Files inside this folder can contain specific element styles and layout. 
+*/
+
+header .search-bar svg {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translate(-50%, -50%);
+  stroke: #585858;
+  stroke-width: 2;
+  width: 17px;
+  fill: transparent;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+header .practern-logo svg g {
+  fill: #435464;
+}
+
+header .practern-logo svg .logo {
+  fill: #435464;
+}
+
+header .mobile-menu-button svg {
+  stroke: #000;
+  stroke-width: 2;
+  width: 30px;
+  fill: transparent;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+header .login-icon {
+  background-color: #435464;
+}
+
+header .login-icon svg {
+  stroke: white;
+  stroke-width: 2;
+  fill: transparent;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+footer {
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+footer ul .header {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+footer ul li a {
+  color: white;
+}
+
+footer .address li {
+  position: relative;
+  padding-left: 35px;
+  color: white;
+}
+
+footer .address .open-link::after {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+}
+
+footer .address a {
+  color: white;
+}
+
+/*
+This file is used to contain all vendor imports.
+*/
+
+/* Additonal Vendor Tools */
+
+section,
+footer {
+  padding-top: 8em;
+  padding-bottom: 8em;
+}
+
+.body-wrapper {
+  width: 100vw;
+}
+
+.master-head h1 span img {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  left: -95px;
+  top: -18px;
+  z-index: -1;
+}
+
+/* Start */
+
+/* END */
+
+.why-we,
+.community,
+footer {
+  background-color: #10171E;
+  color: white;
+}
+
+hr.unique {
+  border: 0.5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #EB7406, #CD00D1);
+}
+
+span img {
+  display: inline;
+}
+
+.for-students {
+  background-color: #F6F8FA;
+}
+
+.for-students h1 .line-through {
+  text-decoration: line-through;
+  -webkit-text-decoration-color: #FFD500;
+  text-decoration-color: #FFD500;
+  text-decoration-thickness: 6px;
+}
+
+.for-students .feature-1,
+.for-students .feature-2 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: stretch;
+  display: flex;
+  place-content: center;
+}
+
+.for-students .feature-1 {
+  background-position: left;
+}
+
+.for-students .feature-1 img {
+  width: 100%;
+  min-width: 700px;
+  max-width: 1000px;
+}
+
+.for-students .feature-2 {
+  width: 1000px;
+  background-position: right;
+}
+
+.for-students li {
+  padding-bottom: 1rem;
+}
+
+.for-students li svg {
+  stroke: #006BD1;
+  stroke-width: 4;
+  height: 20px;
+  width: 20px;
+  fill: transparent;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+@media (max-width: 768px) {
+  .for-students .feature-1 img {
+    min-width: 200px;
+  }
+
+  .for-students .feature-2 {
+    width: 600px;
+  }
+}
+
+.for-companies h1 .primary-gradient {
+  background: linear-gradient(to right, #EB7406, #CD00D1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.community {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.community .left-av,
+.community .right-av {
+  display: flex;
+  width: 50vw;
+  min-width: 80px;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  align-items: center;
+}
+
+.community .left-av .av,
+.community .right-av .av {
+  height: 150px;
+  width: 150px;
+}
+
+.community .left-av .av img,
+.community .right-av .av img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.community .container {
+  min-width: 300px;
+}
+
+.community .left-av .av:first-child img {
+  margin-left: 5vw;
+}
+
+.community .left-av .av:nth-child(2) img {
+  margin-left: -25vw;
+}
+
+.community .left-av .av:nth-child(3) img {
+  margin-left: -5vw;
+}
+
+.community .left-av .av:nth-child(4) img {
+  margin-left: 7vw;
+}
+
+.community .left-av .av:last-child img {
+  margin-left: -12vw;
+}
+
+.community .right-av .av:first-child img {
+  margin-left: -18vw;
+}
+
+.community .right-av .av:nth-child(2) img {
+  margin-left: 4vw;
+}
+
+.community .right-av .av:nth-child(3) img {
+  margin-left: -12vw;
+}
+
+.community .right-av .av:nth-child(4) img {
+  margin-left: 12vw;
+}
+
+.community .right-av .av:last-child img {
+  margin-left: 0vw;
+}
+
+@media (max-width: 640px) {
+  .community .left-av .av:first-child img {
+    margin-left: -1vw;
+  }
+
+  .community .left-av .av:nth-child(2) img {
+    margin-left: -8vw;
+  }
+
+  .community .left-av .av:nth-child(4) img {
+    margin-left: -20vw;
+  }
+
+  .community .right-av .av:first-child img {
+    margin-left: 0vw;
+  }
+
+  .community .right-av .av:nth-child(3) img {
+    margin-left: -6vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .community.signup .left-av,
+  .community.signup .right-av {
+    width: 1px;
+    min-width: 0px;
+  }
+}
+
+.blogger.swiper-container .card-initial {
+  background-color: #10171E;
+}
+
+.blogger.swiper-container .custom-h-112 {
+  height: 28rem;
+}
+
+section.learn-more {
+  background-color: #FFD500;
+}
+
+section.learn-more ul li {
+  color: #435464;
+  position: relative;
+  max-width: calc(100% - 40px);
+}
+
+section.learn-more ul li .open-link::after {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.internship-card svg {
+  width: 20px;
+  height: 20px;
+  stroke: #9ca3af;
+  stroke-width: 2;
+  fill: transparent;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+
+/*# sourceMappingURL=/style.87fda472.css.map */
