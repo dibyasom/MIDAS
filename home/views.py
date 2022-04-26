@@ -8,7 +8,7 @@ from core.models.conference import Conference
 
 # Create your views here.
 def render_landing_page(request, uniquename):
-    return render("landing_page.html")
+    return render(request, "landing_page.html")
 
 
 def render_latest_conference(request):
