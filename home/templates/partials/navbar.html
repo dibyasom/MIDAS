@@ -15,7 +15,7 @@
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <a class="navbar-brand" href="#"><span><img src="/media/{{conference.venue.university_logo}}"
                     alt="{{conference.venue}} logo" srcset="" height="40px"></span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -47,14 +47,11 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Committees -->
-                    </a>
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Committees
-                   </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: fit-content;">
                         <!-- <li><a class="dropdown-item" href="#">Steering Committee</a></li> -->
                         <!-- <li><a class="dropdown-item" href="#">Organizing Committee</a></li> -->
                         <li><a class="dropdown-item" href="/technicalprogramcommittee/{{conference.unique_address}}">Technical Program Committee</a></li>
@@ -62,9 +59,8 @@
                         <li><a class="dropdown-item" href="/internationaladvisory/{{conference.unique_address}}">International Committee</a></li>
                         <!-- <li><a class="dropdown-item" href="#">Student Organizing Committee</a></li> -->
                     </ul>
-
-                    
                 </li>
+
                 <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
                     <a href="/organisations"
                         class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Registration</a>
