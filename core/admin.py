@@ -6,148 +6,148 @@ import pandas as pd
 
 from core.models import (
     conference,
-    # schedule_for_early_track,
-    # schedule_for_regular_track,
-    # stakeholder,
-    # venue,
-    # announcement,
-    # track_for_paper,
-    # technical_partner,
-    # publication_partner,
-    # bulletpoints,
-    # national_advisory,
-    # international_advisory,
-    # organising_committee,
-    # student_organising_committee,
-    # special_session,
-    # technical_program_committee,
-    # speaker,
-    # stakeholder,
-    # steering_committee,
+    schedule_for_early_track,
+    schedule_for_regular_track,
+    stakeholder,
+    venue,
+    announcement,
+    track_for_paper,
+    technical_partner,
+    publication_partner,
+    bulletpoints,
+    national_advisory,
+    international_advisory,
+    organising_committee,
+    student_organising_committee,
+    special_session,
+    technical_program_committee,
+    speaker,
+    stakeholder,
+    steering_committee,
 )
 
 
 @admin.register(
     conference.Conference,
-    # venue.Venue,
-    # announcement.Announcement,
-    # schedule_for_early_track.ScheduleForEarlyTrack,
-    # schedule_for_regular_track.ScheduleForRegularTrack,
-    # technical_partner.TechnicalPartner,
-    # publication_partner.PublicationPartner,
-    # bulletpoints.BulletPoint,
-    # speaker.Speaker,
-    # stakeholder.StakeHolder,
-    # steering_committee.SteeringCommittee,
-    # organising_committee.OrganisingCommittee,
-    # student_organising_committee.StudentOrganisingCommittee,
-    # special_session.SpecialSession,
+    venue.Venue,
+    announcement.Announcement,
+    schedule_for_early_track.ScheduleForEarlyTrack,
+    schedule_for_regular_track.ScheduleForRegularTrack,
+    technical_partner.TechnicalPartner,
+    publication_partner.PublicationPartner,
+    bulletpoints.BulletPoint,
+    speaker.Speaker,
+    stakeholder.StakeHolder,
+    steering_committee.SteeringCommittee,
+    organising_committee.OrganisingCommittee,
+    student_organising_committee.StudentOrganisingCommittee,
+    special_session.SpecialSession,
 )
 class UniversalAdmin(admin.ModelAdmin):
     def get_list_display(self, request):
         return [field.name for field in self.model._meta.concrete_fields]
 
 
-# @admin.register(track_for_paper.TrackForPaper)
-# class TrackForPaperAdmin(admin.ModelAdmin, DynamicArrayMixin):
-#     list_display = ("conference", "title", "pointers")
+@admin.register(track_for_paper.TrackForPaper)
+class TrackForPaperAdmin(admin.ModelAdmin, DynamicArrayMixin):
+    list_display = ("conference", "title", "pointers")
 
 
-# # Models with custom save behaviour - Allows instance creation from excel entries
-# @admin.register(
-#     national_advisory.NationalAdvisoryCommittee,
-# )
-# class NationalAdvisoryAdmin(admin.ModelAdmin):
-#     def save_model(
-#         self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
-#     ) -> None:
+# Models with custom save behaviour - Allows instance creation from excel entries
+@admin.register(
+    national_advisory.NationalAdvisoryCommittee,
+)
+class NationalAdvisoryAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
+    ) -> None:
 
-#         # Read excel file
-#         committee_map = pd.read_excel(obj.committee_map)
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
 
-#         # Save and create ind
-#         obj.save()
+        # Save and create ind
+        obj.save()
 
-#         # Iterate through entries
-#         for index, row in committee_map.iterrows():
-#             salutation, full_name, designation, affiliation = (
-#                 row["Salutation"],
-#                 row["Full Name"],
-#                 row["Designation"],
-#                 row["Affiliation"],
-#             )
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            salutation, full_name, designation, affiliation = (
+                row["Salutation"],
+                row["Full Name"],
+                row["Designation"],
+                row["Affiliation"],
+            )
 
-#             # Append FOreignKey fields
-#             stakeholder.StakeHolder.objects.create(
-#                 national_committee=obj,
-#                 full_name=f"{salutation}{full_name}",
-#                 afiliation=affiliation,
-#             )
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                national_committee=obj,
+                full_name=f"{salutation}{full_name}",
+                afiliation=affiliation,
+            )
 
-#         return super().save_model(request, obj, form, change)
-
-
-# @admin.register(
-#     international_advisory.InternationalAdvisoryCommittee,
-# )
-# class InternationalAdvisoryAdmin(admin.ModelAdmin):
-#     def save_model(
-#         self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
-#     ) -> None:
-
-#         # Read excel file
-#         committee_map = pd.read_excel(obj.committee_map)
-
-#         # Save and create ind
-#         obj.save()
-
-#         # Iterate through entries
-#         for index, row in committee_map.iterrows():
-#             salutation, full_name, designation, affiliation = (
-#                 row["Salutation"],
-#                 row["Full Name"],
-#                 row["Designation"],
-#                 row["Affiliation"],
-#             )
-
-#             # Append FOreignKey fields
-#             stakeholder.StakeHolder.objects.create(
-#                 international_committee=obj,
-#                 full_name=f"{salutation}{full_name}",
-#                 afiliation=affiliation,
-#             )
-
-#         return super().save_model(request, obj, form, change)
+        return super().save_model(request, obj, form, change)
 
 
-# @admin.register(
-#     technical_program_committee.TechnicalProgramCommittee,
-# )
-# class TpcAdmin(admin.ModelAdmin):
-#     def save_model(
-#         self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
-#     ) -> None:
+@admin.register(
+    international_advisory.InternationalAdvisoryCommittee,
+)
+class InternationalAdvisoryAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
+    ) -> None:
 
-#         # Read excel file
-#         committee_map = pd.read_excel(obj.committee_map)
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
 
-#         # Save and create ind
-#         obj.save()
+        # Save and create ind
+        obj.save()
 
-#         # Iterate through entries
-#         for index, row in committee_map.iterrows():
-#             salutation, full_name, designation, affiliation = (
-#                 row["Salutation"],
-#                 row["Full Name"],
-#                 row["Designation"],
-#                 row["Affiliation"],
-#             )
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            salutation, full_name, designation, affiliation = (
+                row["Salutation"],
+                row["Full Name"],
+                row["Designation"],
+                row["Affiliation"],
+            )
 
-#             # Append FOreignKey fields
-#             stakeholder.StakeHolder.objects.create(
-#                 tp_committee=obj,
-#                 full_name=f"{salutation}{full_name}",
-#                 afiliation=affiliation,
-#             )
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                international_committee=obj,
+                full_name=f"{salutation}{full_name}",
+                afiliation=affiliation,
+            )
 
-#         return super().save_model(request, obj, form, change)
+        return super().save_model(request, obj, form, change)
+
+
+@admin.register(
+    technical_program_committee.TechnicalProgramCommittee,
+)
+class TpcAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
+    ) -> None:
+
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
+
+        # Save and create ind
+        obj.save()
+
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            salutation, full_name, designation, affiliation = (
+                row["Salutation"],
+                row["Full Name"],
+                row["Designation"],
+                row["Affiliation"],
+            )
+
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                tp_committee=obj,
+                full_name=f"{salutation}{full_name}",
+                afiliation=affiliation,
+            )
+
+        return super().save_model(request, obj, form, change)
