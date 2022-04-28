@@ -1,0 +1,77 @@
+<!-- Load all static content -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>404</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token"
+        content="PBqzG9J_DR1L1HoiVzE1aLJ2RU-4XrHBG0ootbNGlcPEpOG8rnKBo4yrRcjYpwYkigKSYTSTNFt5frvIVRcvRw" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" media="all"
+        href="{% static 'assets/application.debug-370a5a64dca3604e8ed216e03512f3214fc5550b42af3b69ede4d0f30e7f16d9.css' %}"
+        data-turbolinks-track="reload" />
+    <link rel="stylesheet" media="all"
+        href="{% static 'assets/new-marketing.debug-30639b97046acd52f88ef0875963f212a508fa9b182f396aeacd4271f4766f0c.css' %}"
+        data-turbolinks-track="reload" />
+    <link href="{% static 'assets/primer.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/timeline.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/alliance-no1' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}" />
+
+
+    <!-- Load logo -->
+    <link rel="icon" type="image/x-icon" href="/media/{{conference.venue.university_logo}}" />
+
+    <!--  Essential META Tags -->
+    <meta property="og:title" content="MIDAS 2022" />
+    <meta name="description"
+        content="MIDAS-2021 aims to promote and provide a platform for researchers, academia and practitioners to meet and exchange ideas on recent theoretical and applied Machine and ArtificialIntelligence and Data Sciences research." />
+    <meta property="og:image" content="https://icmidas.in/static/img/logo.png" />
+    <meta property="og:url" content="https://icmidas.in/" />
+    <meta name="twitter:card"
+        content="https://cdn.discordapp.com/attachments/761280961605664780/937210732498546698/GitHub_Presentation_Template.png" />
+
+    <!--  Non-Essential, But Recommended -->
+    <meta property="og:description"
+        content="MIDAS-2021 aims to promote and provide a platform for researchers, academia and practitioners to meet and exchange ideas on recent theoretical and applied Machine and ArtificialIntelligence and Data Sciences research." />
+    <meta property="og:site_name" content="MIDAS 2022" />
+    <meta name="twitter:image:alt" content="MIDAS 2022" />
+
+    <!--  Non-Essential, But Required for Analytics -->
+    <meta name="twitter:site" content="@midas" />
+</head>
+
+<body>
+
+    <!-- Render navbar -->
+    {% include 'partials/navbar.html' %}
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                <img src="{% static '/images/404.webp' %}" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer partial -->
+    {% include 'partials/footer.html' %}
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

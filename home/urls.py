@@ -20,4 +20,11 @@ from home import views
 urlpatterns = [
     # path("<str:uniquename>", views.render_landing_page),
     path("", views.render_latest_conference),
+    # Render track details
+    path("tracks/<str:uniquename>", views.render_tracks),
+    path("technicalprogramcommittee/<str:uniquename>", views.render_tpc),
+    path("nationaladvisory/<str:uniquename>", views.render_national_committee),
+    path(
+        "internationaladvisory/<str:uniquename>", views.render_international_committee
+    ),
 ]

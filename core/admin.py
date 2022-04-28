@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
+# Import pandas for excel processing
+import pandas as pd
+
 from core.models import (
     conference,
     schedule_for_early_track,
@@ -36,12 +39,9 @@ from core.models import (
     speaker.Speaker,
     stakeholder.StakeHolder,
     steering_committee.SteeringCommittee,
-    national_advisory.NationalAdvisoryCommittee,
-    international_advisory.InternationalAdvisoryCommittee,
     organising_committee.OrganisingCommittee,
     student_organising_committee.StudentOrganisingCommittee,
     special_session.SpecialSession,
-    technical_program_committee.TechnicalProgramCommittee,
 )
 class UniversalAdmin(admin.ModelAdmin):
     def get_list_display(self, request):
@@ -51,3 +51,103 @@ class UniversalAdmin(admin.ModelAdmin):
 @admin.register(track_for_paper.TrackForPaper)
 class TrackForPaperAdmin(admin.ModelAdmin, DynamicArrayMixin):
     list_display = ("conference", "title", "pointers")
+
+
+# Models with custom save behaviour - Allows instance creation from excel entries
+@admin.register(
+    national_advisory.NationalAdvisoryCommittee,
+)
+class NationalAdvisoryAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
+    ) -> None:
+
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
+
+        # Save and create ind
+        obj.save()
+
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            salutation, full_name, designation, affiliation = (
+                row["Salutation"],
+                row["Full Name"],
+                row["Designation"],
+                row["Affiliation"],
+            )
+
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                national_committee=obj,
+                full_name=f"{salutation}{full_name}",
+                afiliation=affiliation,
+            )
+
+        return super().save_model(request, obj, form, change)
+
+
+@admin.register(
+    international_advisory.InternationalAdvisoryCommittee,
+)
+class InternationalAdvisoryAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
+    ) -> None:
+
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
+
+        # Save and create ind
+        obj.save()
+
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            salutation, full_name, designation, affiliation = (
+                row["Salutation"],
+                row["Full Name"],
+                row["Designation"],
+                row["Affiliation"],
+            )
+
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                international_committee=obj,
+                full_name=f"{salutation}{full_name}",
+                afiliation=affiliation,
+            )
+
+        return super().save_model(request, obj, form, change)
+
+
+@admin.register(
+    technical_program_committee.TechnicalProgramCommittee,
+)
+class TpcAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: national_advisory.NationalAdvisoryCommittee, form, change
+    ) -> None:
+
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
+
+        # Save and create ind
+        obj.save()
+
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            salutation, full_name, designation, affiliation = (
+                row["Salutation"],
+                row["Full Name"],
+                row["Designation"],
+                row["Affiliation"],
+            )
+
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                tp_committee=obj,
+                full_name=f"{salutation}{full_name}",
+                afiliation=affiliation,
+            )
+
+        return super().save_model(request, obj, form, change)
