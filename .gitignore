@@ -10,7 +10,7 @@ db/
 *.so
 
 # Data backups
-# data/
+data/
 
 # Distribution / packaging
 .Python
