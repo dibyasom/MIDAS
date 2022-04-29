@@ -1,16 +1,11 @@
 <!-- Load all static content -->
 {% load static %}
 
-<!-- Load navbar dropdown stylesheet -->
-<link rel="stylesheet" href="{% static '/css/dropdown-navbar.css' %}">
-
 <div class="d-none d-md-block py-2 color-bg-emphasis" style="background-color: black; color: white;">
-    <div class="container-lg">
-        <div class="container-xl p-responsive d-flex flex-md-justify-between">
-            <!-- <div class="container-lg clearfix pt-6"> -->
-            <a class="d-block color-fg-on-emphasis no-underline" style="color: white; text-decoration: none;"
-                href="">{{conference.title}}</a>
-        </div>
+    <div class="container text-left p-0">
+        <!-- <div class="container-lg clearfix pt-6"> -->
+        <a class="d-block color-fg-on-emphasis no-underline" style="color: white; text-decoration: none;"
+            href="">{{conference.title}}</a>
     </div>
 </div>
 
@@ -22,12 +17,11 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse d-flex justify-content-end " id="navbarSupportedContent">
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li href="/" class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
-                    <a class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark"
-                        href="/">Home</a>
+                    <a class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark" href="/">Home</a>
                 </li>
 
                 <li href="#about" class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
@@ -46,7 +40,7 @@
                         Dates</a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Committees
@@ -54,9 +48,14 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: fit-content;">
                         <!-- <li><a class="dropdown-item" href="#">Steering Committee</a></li> -->
                         <!-- <li><a class="dropdown-item" href="#">Organizing Committee</a></li> -->
-                        <li><a class="dropdown-item" href="/technicalprogramcommittee/{{conference.unique_address}}">Technical Program Committee</a></li>
-                        <li><a class="dropdown-item" href="/nationaladvisory/{{conference.unique_address}}">National Committee</a></li>
-                        <li><a class="dropdown-item" href="/internationaladvisory/{{conference.unique_address}}">International Committee</a></li>
+                        <li><a class="dropdown-item"
+                                href="/technicalprogramcommittee/{{conference.unique_address}}">Technical Program
+                                Committee</a></li>
+                        <li><a class="dropdown-item" href="/nationaladvisory/{{conference.unique_address}}">National
+                                Committee</a></li>
+                        <li><a class="dropdown-item"
+                                href="/internationaladvisory/{{conference.unique_address}}">International Committee</a>
+                        </li>
                         <!-- <li><a class="dropdown-item" href="#">Student Organizing Committee</a></li> -->
                     </ul>
                 </li>
@@ -66,20 +65,20 @@
                         class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Registration</a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Call for papers
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/tracks/{{conference.unique_address}}">Tracks for paper</a></li>
+                        <li><a class="dropdown-item" href="/tracks/{{conference.unique_address}}">Tracks for paper</a>
+                        </li>
                         <li><a class="dropdown-item" href="{{conference.easy_chair_submission_url}}">Submission</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item d-flex flex-items-center mx-3 mb-2 mb-sm-3 mb-md-0">
-                    <a href="#"
-                        class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Special
+                    <a href="#" class="no-underline header-goToGithub d-flex flex-items-center link-gray-dark">Special
                         Session(s)</a>
                 </li>
 
