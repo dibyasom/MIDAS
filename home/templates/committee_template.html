@@ -50,6 +50,9 @@
 
     <!--  Non-Essential, But Required for Analytics -->
     <meta name="twitter:site" content="@midas" />
+
+    <!-- Datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 </head>
 
 <body>
@@ -57,33 +60,55 @@
     <!-- Render navbar -->
     {% include 'partials/navbar.html' %}
 
-    {{stk}}
-    <div class="container m-4 p-1 mt-6">
-        <h2 class="m-2 mt-4 p-2" style="background-color: #F6F8FA; border-radius: 5px;">{{committee_title}}</h2>
-    </div>
+    <div class="container" style="width: 100%;">
 
-    <div class="container m-4 p-2 d-flex justify-content-center align-items-center">
-        <div class="list-group">
-            {% for member in committee %}
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                    <h3 class="f3 mb-1">{{member.full_name}}</h3>
-                    <small class="mr-auto text-left">{{member.afiliation}}</small>
-                </div>
-                <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                blandit.</p> -->
-
-            </a>
-            {% endfor %}
+        <div class="container m-4 p-1 mt-6">
+            <h2 class="m-2 mt-4 p-2" style="background-color: #F6F8FA; border-radius: 5px;">{{committee_title}}</h2>
         </div>
-    </div>
 
+        <div class="container m-4 p-2 d-flex justify-content-center align-items-center">
+            <div class="list-group">
+
+            </div>
+        </div>
+
+
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Affiliation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in committee %}
+                <tr>
+                    <td class="f4">{{member.full_name}}</td>
+                    <td class="f4">{{member.afiliation}}</td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <!-- Footer partial -->
     {% include 'partials/footer.html' %}
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.4/date-1.1.2/r-2.2.9/sc-2.0.5/datatables.min.js">
+    </script>
+
+    <!-- Init datatable. -->
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                "scrollX": true
+            });
+        });
     </script>
 </body>
 

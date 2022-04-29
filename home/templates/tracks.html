@@ -29,6 +29,8 @@
     <link href="{% static 'assets/alliance-no1' %}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}" />
 
+    <!-- Datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
     <!-- Load logo -->
     <link rel="icon" type="image/x-icon" href="/media/{{conference.venue.university_logo}}" />
@@ -57,32 +59,55 @@
     <!-- Render navbar -->
     {% include 'partials/navbar.html' %}
 
-    <div class="container m-auto p-2 d-flex justify-content-center align-items-center">
-        <div class="list-group" style="width: 75%;">
-            {% for track in tracks %}
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                    <h3 class="mb-1">{{track.title}}</h3>
-                    <small class="ml-1">{{track.created_at}}</small>
-                </div>
-                <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                blandit.</p> -->
-                <ol class="list-group list-group-flush">
-                    {% for pointer in track.pointers %}
-                    <li class="list-group-item">{{pointer}}</li>
-                    {% endfor %}
-                </ol>
-            </a>
-            {% endfor %}
-        </div>
-    </div>
+    <div class="container" style="width: 100%;">
 
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>Track</th>
+                    <th>Subtracks</th>
+                    <th>Published at</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for track in tracks %}
+                <tr>
+                    <td class="f4">{{track.title}}</td>
+                    <td class="f4">
+                        <ol class="">
+                            {% for pointer in track.pointers %}
+                            <li>{{pointer}}</li>
+                            {% endfor %}
+                        </ol>
+                    </td>
+                    <td class="f5">{{track.created_at}}</td>
+                    <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+                        blandit.</p> -->
+
+                    {% endfor %}
+                <tr>
+            </tbody>
+        </table>
+    </div>
     <!-- Footer partial -->
     {% include 'partials/footer.html' %}
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.4/date-1.1.2/r-2.2.9/sc-2.0.5/datatables.min.js">
+    </script>
+
+    <!-- Init datatable. -->
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                "scrollX": true
+            });
+        });
     </script>
 </body>
 
