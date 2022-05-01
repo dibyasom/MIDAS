@@ -1,0 +1,112 @@
+<!-- Load all static content -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>{{committee_title}}</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token"
+        content="PBqzG9J_DR1L1HoiVzE1aLJ2RU-4XrHBG0ootbNGlcPEpOG8rnKBo4yrRcjYpwYkigKSYTSTNFt5frvIVRcvRw" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" media="all"
+        href="{% static 'assets/application.debug-370a5a64dca3604e8ed216e03512f3214fc5550b42af3b69ede4d0f30e7f16d9.css' %}"
+        data-turbolinks-track="reload" />
+    <link rel="stylesheet" media="all"
+        href="{% static 'assets/new-marketing.debug-30639b97046acd52f88ef0875963f212a508fa9b182f396aeacd4271f4766f0c.css' %}"
+        data-turbolinks-track="reload" />
+    <link href="{% static 'assets/primer.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/timeline.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/alliance-no1' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}" />
+
+
+    <!-- Load logo -->
+    <link rel="icon" type="image/x-icon" href="/media/{{conference.venue.university_logo}}" />
+
+    <!--  Essential META Tags -->
+    <meta property="og:title" content="MIDAS 2022" />
+    <meta name="description"
+        content="MIDAS-2021 aims to promote and provide a platform for researchers, academia and practitioners to meet and exchange ideas on recent theoretical and applied Machine and ArtificialIntelligence and Data Sciences research." />
+    <meta property="og:image" content="https://icmidas.in/static/img/logo.png" />
+    <meta property="og:url" content="https://icmidas.in/" />
+    <meta name="twitter:card"
+        content="https://cdn.discordapp.com/attachments/761280961605664780/937210732498546698/GitHub_Presentation_Template.png" />
+
+    <!--  Non-Essential, But Recommended -->
+    <meta property="og:description"
+        content="MIDAS-2021 aims to promote and provide a platform for researchers, academia and practitioners to meet and exchange ideas on recent theoretical and applied Machine and ArtificialIntelligence and Data Sciences research." />
+    <meta property="og:site_name" content="MIDAS 2022" />
+    <meta name="twitter:image:alt" content="MIDAS 2022" />
+
+    <!--  Non-Essential, But Required for Analytics -->
+    <meta name="twitter:site" content="@midas" />
+
+    <!-- Datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <style>
+        .strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Render navbar -->
+    {% include 'partials/navbar.html' %}
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="col-12 text-center">
+                <h2 class="m-2 mt-4 p-2" style="background-color: #F6F8FA; border-radius: 5px;">{{committee_title}}</h2>
+            </div>
+
+
+            <div class="col-12 col-lg-8 col-md-8 mx-auto mt-6">
+                {% for designation,members in steering_committee_dict.items %}
+
+                <div class="col-8 col-sm-12 px-md-3">
+                    <p class="f3 strong">{{designation}}</p>
+                    <ul class="list-group list-group-flush">
+                        {% for member in members%}
+                        <li class="list-group-item">{{member}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Footer partial -->
+    {% include 'partials/footer.html' %}
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.4/date-1.1.2/r-2.2.9/sc-2.0.5/datatables.min.js">
+    </script>
+
+    <!-- Init datatable. -->
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                "scrollX": true
+            });
+        });
+    </script>
+</body>
+
+</html>

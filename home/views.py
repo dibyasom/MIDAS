@@ -77,6 +77,7 @@ def render_steering_committee(request, uniquename):
         )
 
         steering_committee_dict = dict()
+
         for member in steering_committee_members:
             try:
                 _ = steering_committee_dict[member.designation]
@@ -87,12 +88,21 @@ def render_steering_committee(request, uniquename):
                     member.full_name,
                 ]
 
+        steering_committee_designations = list()
+        steering_committee_members_collection = list()
+
+        for _designation, _members in steering_committee_dict.items():
+            steering_committee_designations.append(_designation)
+            steering_committee_members_collection.append(_members)
+
         return render(
             request,
-            "committee_template.html",
+            "committee_template_4_steering.html",
             {
                 "conference": conference,
-                "committee": conference.steering_committee.steering_committee.all(),
+                "steering_committee_designations": steering_committee_designations,
+                "steering_committee_members_collection": steering_committee_members_collection,
+                "steering_committee_dict": steering_committee_dict,
                 "committee_title": "Steering Committee",
                 "no_affiliation": True,
             },
