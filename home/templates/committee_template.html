@@ -60,36 +60,42 @@
     <!-- Render navbar -->
     {% include 'partials/navbar.html' %}
 
-    <div class="container" style="width: 100%;">
+    <div class="col-12">
 
-        <div class="container m-4 p-1 mt-6">
+        <div class="col-12 text-center">
             <h2 class="m-2 mt-4 p-2" style="background-color: #F6F8FA; border-radius: 5px;">{{committee_title}}</h2>
         </div>
 
-        <div class="container m-4 p-2 d-flex justify-content-center align-items-center">
-            <div class="list-group">
 
-            </div>
+        <div class="col-12 px-1">
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        {% if no_affiliation %}
+                        <th>Designation</th>
+                        {% else %}
+                        <th>Affiliation</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in committee %}
+                    <tr>
+                        <td class="f4">{{member.full_name}}</td>
+
+                        <!-- Render designation / afiliation -->
+                        {% if no_affiliation %}
+                        <td class="f4">{{member.designation}}</td>
+                        {% else %}
+                        <td class="f4">{{member.afiliation}}</td>
+                        {% endif %}
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-
-
-        <table id="table_id" class="display">
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Affiliation</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for member in committee %}
-                <tr>
-                    <td class="f4">{{member.full_name}}</td>
-                    <td class="f4">{{member.afiliation}}</td>
-                </tr>
-
-                {% endfor %}
-            </tbody>
-        </table>
     </div>
     <!-- Footer partial -->
     {% include 'partials/footer.html' %}

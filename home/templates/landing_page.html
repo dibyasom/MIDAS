@@ -75,37 +75,27 @@
       </figure>
     </div> -->
 
-      <div class="col-md-12 mb-9">
-        <h2 class="f5 text-normal text-white mb-3 text-mono">
+      <div class="col-md-12 my-9" style="background-color: rgba(0,0,0,0.7); m-auto">
+        <h2 class="f5 text-normal text-white my-3 text-mono text-center">
           Machine Learning and Data Science <span><img src="{% static '/images/graduation.svg' %}" alt="" srcset=""
               height="30px"></span>
         </h2>
-        <h1 class="h0-mktg lh-condensed mb-3" style="color: white;">{{ conference.title }}</h1>
+        <h1 class="h1-mktg lh-condensed text-center" style="color: white;">{{ conference.title }}</h1>
       </div>
-
-      <style scoped="">
-        @media (max-width: 768px) {
-
-          /* or 301 if you want really the same as previously.  */
-          .margin-correction {
-            margin-left: -280px;
-          }
-        }
-      </style>
     </div>
 
-    <div class="d-md-flex mt-4 gutter-md-spacious" id="about">
-      <!-- TEST -->
-      <div class="col-md-12 mb-9">
-        <p class="f4 text-gray-light-ultra mb-6">{{ conference.about }}</p>
+    <div class="d-md-flex mt-9 gutter-md-spacious" id="about">
+      
+      <div class="col-md-12 mb-9 container-xl mx-auto p-responsive">
+        <span class="mb-2 f2"> <img style="max-height: 40px;" src="{% static '/images/about-480.png' %}" alt=""> About the conference</span>
+        <p class="f4 text-gray-light-ultra mb-3">{{ conference.about }}</p>
       </div>
-
 
     </div>
 
   </section>
 
-  <section class="color-bg-tertiary mt-md-9 pt-8 pb-9 mb-n6">
+  <section class="color-bg-tertiary mt-md-3 pt-8 pb-9 mb-n6">
     <div class="container-xl mx-auto p-responsive">
       <h2 class="h2-mktg mb-7">Announcements</h2>
       <div class="d-flex flex-row flex-wrap align-items-center justify-content-around mt-md-4">
@@ -343,8 +333,14 @@
                       </div>
                       <div class="card">
                         <div class="info">
-                          <p class="f2-mktg text-gradient-purple-coral text-bold title">Conference Date</p>
-                          <p> {{early_schedule.conference_dates}} </p>
+                          <p class="f2-mktg text-gradient-purple-coral text-bold title">Start Date</p>
+                          <p> {{early_schedule.start_date}} </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="info">
+                          <p class="f2-mktg text-gradient-purple-coral text-bold title">End Date</p>
+                          <p> {{early_schedule.end_date}} </p>
                         </div>
                       </div>
 
@@ -387,8 +383,14 @@
                       </div>
                       <div class="card">
                         <div class="info">
-                          <p class="f2-mktg text-gradient-purple-coral text-bold title">Conference Date</p>
-                          <p> {{regular_schedule.conference_dates}} </p>
+                          <p class="f2-mktg text-gradient-purple-coral text-bold title">Start Date</p>
+                          <p> {{regular_schedule.start_date}} </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="info">
+                          <p class="f2-mktg text-gradient-purple-coral text-bold title">End Date</p>
+                          <p> {{regular_schedule.end_date}} </p>
                         </div>
                       </div>
 

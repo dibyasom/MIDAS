@@ -16,7 +16,8 @@ class ScheduleForEarlyTrack(models.Model):
     last_date = models.DateField()
     author_notification = models.DateField()
     registration_deadline = models.DateField()
-    conference_dates = models.DateField()
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
 
     def __str__(self) -> str:
         return str(self.conference)

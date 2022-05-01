@@ -38,7 +38,6 @@ from core.models import (
     bulletpoints.BulletPoint,
     speaker.Speaker,
     stakeholder.StakeHolder,
-    steering_committee.SteeringCommittee,
     organising_committee.OrganisingCommittee,
     student_organising_committee.StudentOrganisingCommittee,
     special_session.SpecialSession,
@@ -148,6 +147,37 @@ class TpcAdmin(admin.ModelAdmin):
                 tp_committee=obj,
                 full_name=f"{salutation}{full_name}",
                 afiliation=affiliation,
+            )
+
+        return super().save_model(request, obj, form, change)
+
+
+@admin.register(
+    steering_committee.SteeringCommittee,
+)
+class TpcAdmin(admin.ModelAdmin):
+    def save_model(
+        self, request, obj: steering_committee.SteeringCommittee, form, change
+    ) -> None:
+
+        # Read excel file
+        committee_map = pd.read_excel(obj.committee_map)
+
+        # Save and create ind
+        obj.save()
+
+        # Iterate through entries
+        for index, row in committee_map.iterrows():
+            full_name, designation,  = (
+                row["Full Name"],
+                row["Designation"],
+            )
+
+            # Append FOreignKey fields
+            stakeholder.StakeHolder.objects.create(
+                steering_committee=obj,
+                full_name=f"{full_name}",
+                designation=designation,
             )
 
         return super().save_model(request, obj, form, change)

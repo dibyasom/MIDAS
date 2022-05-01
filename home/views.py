@@ -66,6 +66,42 @@ def render_international_committee(request, uniquename):
         return render(request, "404.html")
 
 
+def render_steering_committee(request, uniquename):
+    try:
+        # Get associate conference
+        conference = Conference.objects.get(unique_address=uniquename)
+
+        # For steering_committee, create dict -> key:disgnation, value:fullname+affiliation
+        steering_committee_members = (
+            conference.steering_committee.steering_committee.all()
+        )
+
+        steering_committee_dict = dict()
+        for member in steering_committee_members:
+            try:
+                _ = steering_committee_dict[member.designation]
+                steering_committee_dict[member.designation].append(member.full_name)
+            except:
+                # Key not present - create a list <3
+                steering_committee_dict[member.designation] = [
+                    member.full_name,
+                ]
+
+        return render(
+            request,
+            "committee_template.html",
+            {
+                "conference": conference,
+                "committee": conference.steering_committee.steering_committee.all(),
+                "committee_title": "Steering Committee",
+                "no_affiliation": True,
+            },
+        )
+    except Exception as err:
+        print("ERROR - STEERING COMMITTEE", err)
+        return render(request, "404.html")
+
+
 def render_tracks(request, uniquename):
     # Fetch conference
     try:
