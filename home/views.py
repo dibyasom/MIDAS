@@ -72,6 +72,7 @@ def render_international_committee(request, uniquename):
     # Fetch conference
     try:
         conference = Conference.objects.get(unique_address=uniquename)
+
         return render(
             request,
             "committee_template.html",
@@ -155,6 +156,9 @@ def render_latest_conference(request):
     Conference.objects.order_by("-created_at")
     conference: Conference = Conference.objects.first()
 
+    full_month_name = conference.venue.start_date.strftime("%B")
+    print("*"*10, full_month_name)
+    
     # Render confernce template w details
     try:
         return render(

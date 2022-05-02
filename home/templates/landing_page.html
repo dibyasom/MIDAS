@@ -75,12 +75,14 @@
       </figure>
     </div> -->
 
-      <div class="col-md-12 my-9 py-3" style="background-color: rgba(0,0,0,0.7); m-auto">
-        <h2 class="f5 text-normal text-white my-3 text-mono text-center">
-          Machine Learning and Data Science <span><img src="{% static '/images/graduation.svg' %}" alt="" srcset=""
-              height="30px"></span>
+      <div class="col-md-12 mb-2 py-6 d-flex flex-column justify-content-center align-items-center" style="background-color: rgba(0,0,0,0.7); height: fit-content;">
+        <div class="col-12">
+        <h2 class="f1 my-3 text-mono text-center" style="color: #3892B3;">
+          WELCOME TO
         </h2>
-        <h1 class="h1-mktg lh-condensed text-center" style="color: white;">{{ conference.title }}</h1>
+        <h1 class="h1-mktg lh-condensed text-center" style="color: #FABD22;">{{ conference.title }}</h1>
+        <p class="f1 text-white text-center mt-2"> <span style="color: #3892B3;"> at </span> <br><strong style="color: #7FBA26;">{{conference.venue.university}}</strong> <br> <span style="color: #3892B3;"> <strong>{{conference.venue.start_date}}</strong> - <strong>{{conference.venue.end_date}}</strong></span></p>
+      </div>
       </div>
     </div>
 
@@ -227,7 +229,7 @@
   </section>
 
 
-  <div class="overflow-hidden" style="background-color: #F6F8FA;">
+  <div class="overflow-hidden" style="background-color: #F6F8FA;" id="partners">
     <section class="container-xl mt-6 mx-auto p-4 position-relative">
       <div class="index-business mt-6 mt-md-0">
         <!-- Parnter Header -->
