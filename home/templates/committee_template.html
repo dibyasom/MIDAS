@@ -52,42 +52,37 @@
     <meta name="twitter:site" content="@midas" />
 
     <!-- Datatable -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body>
 
     <!-- Render navbar -->
     {% include 'partials/navbar.html' %}
-
-    <div class="col-12">
-
-        <div class="col-12 text-center">
-            <h2 class="m-2 mt-4 p-2" style="background-color: #F6F8FA; border-radius: 5px;">{{committee_title}}</h2>
-        </div>
-
-
-        <div class="col-12 px-1">
-            <table id="table_id" class="display">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Affiliation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for member in committee %}
-                    <tr>
-                        <td class="f4">{{member.full_name}}</td>
-                        <td class="f4">{{member.afiliation}}</td>
-
-                    </tr>
-
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <div class="p-4">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Affiliation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in committee %}
+            <tr>
+                <td>{{member.full_name}}</td>
+                <td>{{member.afiliation}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Full Name</th>
+                <th>Affiliation</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
     <!-- Footer partial -->
     {% include 'partials/footer.html' %}
 
@@ -102,7 +97,7 @@
     <!-- Init datatable. -->
     <script>
         $(document).ready(function () {
-            $('#table_id').DataTable({
+            $('#example').DataTable({
                 "scrollX": true
             });
         });
