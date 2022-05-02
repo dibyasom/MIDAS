@@ -72,24 +72,15 @@
                 <thead>
                     <tr>
                         <th>Full Name</th>
-                        {% if no_affiliation %}
-                        <th>Designation</th>
-                        {% else %}
                         <th>Affiliation</th>
-                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
                     {% for member in committee %}
                     <tr>
                         <td class="f4">{{member.full_name}}</td>
-
-                        <!-- Render designation / afiliation -->
-                        {% if no_affiliation %}
-                        <td class="f4">{{member.designation}}</td>
-                        {% else %}
                         <td class="f4">{{member.afiliation}}</td>
-                        {% endif %}
+
                     </tr>
 
                     {% endfor %}
