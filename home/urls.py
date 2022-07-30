@@ -27,5 +27,6 @@ urlpatterns = [
     path(
         "internationaladvisory/<str:uniquename>", views.render_international_committee
     ),
+    path("<str:uniquename>/registration", views.render_registration),
     path("steeringcommittee/<str:uniquename>", views.render_steering_committee),
 ]

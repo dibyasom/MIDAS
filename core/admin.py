@@ -24,6 +24,8 @@ from core.models import (
     speaker,
     stakeholder,
     steering_committee,
+    fee,
+    fee_type,
 )
 
 
@@ -41,6 +43,8 @@ from core.models import (
     organising_committee.OrganisingCommittee,
     student_organising_committee.StudentOrganisingCommittee,
     special_session.SpecialSession,
+    fee.Fee,
+    fee_type.FeeType,
 )
 class UniversalAdmin(admin.ModelAdmin):
     def get_list_display(self, request):
@@ -168,7 +172,7 @@ class TpcAdmin(admin.ModelAdmin):
 
         # Iterate through entries
         for index, row in committee_map.iterrows():
-            full_name, designation,  = (
+            full_name, designation, = (
                 row["Full Name"],
                 row["Designation"],
             )

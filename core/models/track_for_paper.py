@@ -13,7 +13,7 @@ class TrackForPaper(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="tracks",
-        default=Conference.objects.first(),
+        default=Conference.objects.first().pk,
     )
 
     # Org details

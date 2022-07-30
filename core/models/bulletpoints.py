@@ -12,7 +12,7 @@ class BulletPoint(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="bulletpoints",
-        default=Conference.objects.first(),
+        default=Conference.objects.first().pk,
     )
 
     # Org details

@@ -12,7 +12,7 @@ class SpecialSession(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="special_sessions",
-        default=Conference.objects.first(),
+        default=Conference.objects.first().pk,
     )
 
     # Org details

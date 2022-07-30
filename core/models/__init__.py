@@ -17,3 +17,5 @@ from .organising_committee import OrganisingCommittee
 from .student_organising_committee import StudentOrganisingCommittee
 from .special_session import SpecialSession
 from .technical_program_committee import TechnicalProgramCommittee
+from .fee import Fee
+from .fee_type import FeeType

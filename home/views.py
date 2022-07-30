@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from core.models.fee import Fee
+from core.models.fee_type import FeeType
 
 # from core.models.announcement import Announcement
 
@@ -6,6 +8,28 @@ from core.models.conference import Conference
 from core.models.stakeholder import StakeHolder
 
 # from core.models.technical_partner import TechnicalPartner
+
+
+def render_registration(request, uniquename):
+    # Fetch conference
+    try:
+        conference = Conference.objects.get(unique_address=uniquename)
+        fees = conference.fees.all()
+
+        fee_seggregated = dict()
+
+        for fee in fees:
+            fee_seggregated[fee] = fee.types.all()
+
+        return render(
+            request,
+            "registration.html",
+            {"conference": conference, "fees": fee_seggregated},
+        )
+    except Exception as err:
+        print("ERROR - Registration", "!!" * 15, err)
+        return render(request, "404.html")
+
 
 # Create your views here.
 def render_landing_page(request, uniquename):
@@ -157,8 +181,8 @@ def render_latest_conference(request):
     conference: Conference = Conference.objects.first()
 
     full_month_name = conference.venue.start_date.strftime("%B")
-    print("*"*10, full_month_name)
-    
+    print("*" * 10, full_month_name)
+
     # Render confernce template w details
     try:
         return render(

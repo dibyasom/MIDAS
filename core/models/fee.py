@@ -3,7 +3,7 @@ from django.db import models
 from core.models.conference import Conference
 
 
-class PublicationPartner(models.Model):
+class Fee(models.Model):
     # For use cases undefined
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
 
@@ -11,17 +11,16 @@ class PublicationPartner(models.Model):
     conference = models.ForeignKey(
         Conference,
         on_delete=models.CASCADE,
-        related_name="publication_partners",
+        related_name="fees",
         default=Conference.objects.first().pk,
     )
 
-    # Org details
-    org_name = models.CharField(max_length=50)
-    website = models.URLField(blank=True)
-    logo = models.FileField()
+    name_for_category = models.CharField(
+        max_length=75, verbose_name="Fee type (As in regular, early ...)"
+    )
 
     def __str__(self) -> str:
-        return str(self.org_name)
+        return str(self.name_for_category)
 
     class Meta:
         ordering = ["created_at"]

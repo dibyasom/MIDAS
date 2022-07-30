@@ -12,7 +12,7 @@ class Announcement(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="announcements",
-        default=Conference.objects.first(),
+        default=Conference.objects.first().pk,
     )
 
     # Content for announcement
