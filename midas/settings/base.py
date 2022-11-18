@@ -46,37 +46,44 @@ INSTALLED_APPS = [
     "core",
     "home",
 ]
+
 MARKDOWNIFY = {
     "default": {
+        "MARKDOWN_EXTENSIONS": [
+            'markdown.extensions.fenced_code',
+            'markdown.extensions.extra',
+        ],
+        "STRIP": False,
         "WHITELIST_TAGS": [
-            'a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol', 'strong', 'ul', 'br', 'div',
-            'h1',
-            'h2',
-            'h3',
-            'h4',
-            'h5',
-            'h6',
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'blockquote',
+            'em',
+            'i',
+            'li',
+            'ol',
+            'p',
+            'strong',
+            'ul',
+            'code',
+            'span',
+            'div', 'class',
+            'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
         ],
         "WHITELIST_ATTRS": [
             'href',
             'src',
             'alt',
+            'class',
         ],
-        "WHITELIST_STYLES": [
-            'color',
-            'font-weight',
-        ],
-        "LINKIFY_TEXT": {
-            "PARSE_URLS": True,
-
-            # Next key/value-pairs only have effect if "PARSE_URLS" is True
-            "PARSE_EMAIL": False,
-            "CALLBACKS": [],
-            "SKIP_TAGS": [],
-        }
+        "WHITELIST_PROTOCOLS": [
+            'http',
+            'https',
+        ]
     }
 }
-
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [

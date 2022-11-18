@@ -11,7 +11,7 @@ def render_registration(request, uniquename):
     try:
         conference = Conference.objects.get(unique_address=uniquename)
         fees = conference.fees.all()
-        rich_information_blocks = conference.rich_information_block.filter(name="registration")
+        rich_information_blocks = conference.rich_information_block.filter(name="reg")
 
         fee_seggregated = dict()
 
@@ -58,6 +58,8 @@ def render_tpc(request, uniquename):
     # Fetch conference
     try:
         conference = Conference.objects.get(unique_address=uniquename)
+        rich_information_blocks = conference.rich_information_block.filter(
+            name="tpc")
         return render(
             request,
             "committee_template.html",
@@ -76,6 +78,8 @@ def render_national_committee(request, uniquename):
     # Fetch conference
     try:
         conference = Conference.objects.get(unique_address=uniquename)
+        rich_information_blocks = conference.rich_information_block.filter(
+            name="nc")
         return render(
             request,
             "committee_template.html",
@@ -94,7 +98,8 @@ def render_international_committee(request, uniquename):
     # Fetch conference
     try:
         conference = Conference.objects.get(unique_address=uniquename)
-
+        rich_information_blocks = conference.rich_information_block.filter(
+            name="ic")
         return render(
             request,
             "committee_template.html",
