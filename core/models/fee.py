@@ -12,7 +12,7 @@ class Fee(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="fees",
-        default=Conference.objects.first().pk,
+        blank=True, null=True,
     )
 
     name_for_category = models.CharField(

@@ -13,12 +13,13 @@ class TrackForPaper(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="tracks",
-        default=Conference.objects.first().pk,
+        blank=True, null=True,
     )
 
     # Org details
     title = models.CharField(max_length=75)
-    pointers = ArrayField(models.CharField(max_length=250, default=""),null=True, blank=True)
+    pointers = ArrayField(models.CharField(
+        max_length=250, default=""), null=True, blank=True)
 
     def __str__(self) -> str:
         return str(self.title)

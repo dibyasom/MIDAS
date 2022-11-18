@@ -1,11 +1,7 @@
 from django.shortcuts import render
-from core.models.fee import Fee
-from core.models.fee_type import FeeType
 
 # from core.models.announcement import Announcement
-
 from core.models.conference import Conference
-from core.models.stakeholder import StakeHolder
 
 # from core.models.technical_partner import TechnicalPartner
 
@@ -15,6 +11,7 @@ def render_registration(request, uniquename):
     try:
         conference = Conference.objects.get(unique_address=uniquename)
         fees = conference.fees.all()
+        rich_information_blocks = conference.rich_information_block.filter(name="registration")
 
         fee_seggregated = dict()
 
@@ -24,7 +21,8 @@ def render_registration(request, uniquename):
         return render(
             request,
             "registration.html",
-            {"conference": conference, "fees": fee_seggregated},
+            {"conference": conference, "fees": fee_seggregated,
+                "rich_information_blocks": rich_information_blocks},
         )
     except Exception as err:
         print("ERROR - Registration", "!!" * 15, err)
@@ -126,7 +124,8 @@ def render_steering_committee(request, uniquename):
         for member in steering_committee_members:
             try:
                 _ = steering_committee_dict[member.designation]
-                steering_committee_dict[member.designation].append(member.full_name)
+                steering_committee_dict[member.designation].append(
+                    member.full_name)
             except:
                 # Key not present - create a list <3
                 steering_committee_dict[member.designation] = [

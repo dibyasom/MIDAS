@@ -1,5 +1,6 @@
 <!-- Load all static content -->
 {% load static %}
+{% load markdownify %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +73,8 @@
             </div><br><br>
             <div class="col">
                 <p>
-                    The conference will be held in hybrid mode, participants are encouraged to attend the conference in person.
+                    The conference will be held in hybrid mode, participants are encouraged to attend the conference in
+                    person.
                 </p>
             </div>
         </div>
@@ -98,7 +100,7 @@
                         <td>{{detail.registration_type}}</td>
                         <td id="{{fee_type}}_{{detail.registration_type}}_ind">{{detail.fee_for_indians}}</td>
                         <script>
-                            val = {{detail.fee_for_indians}};
+                            val = {{ detail.fee_for_indians }};
                             document.getElementById("{{fee_type}}_{{detail.registration_type}}_ind").innerHTML = val
                                 .toLocaleString(undefined, {
                                     style: 'currency',
@@ -107,7 +109,7 @@
                         </script>
                         <td id="{{fee_type}}_{{detail.registration_type}}_foreign">{{detail.fee_for_foreigner}}</td>
                         <script>
-                            val = {{detail.fee_for_foreigner}};
+                            val = {{ detail.fee_for_foreigner }};
                             document.getElementById("{{fee_type}}_{{detail.registration_type}}_foreign").innerHTML = val
                                 .toLocaleString(undefined, {
                                     style: 'currency',
@@ -122,13 +124,21 @@
         {% endfor %}
     </section>
 
+    <!-- Rich information blocks -->
+    <section class="content">
+        {% for block in rich_information_blocks %}
+        <div class="container mt-4">
+            {{block.content | markdownify}}
+        </div>
+        {% endfor %}
+    </section>
     <!-- Footer partial -->
     {% include 'partials/footer.html' %}
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
 
 </body>
 

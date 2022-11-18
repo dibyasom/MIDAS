@@ -26,6 +26,7 @@ from core.models import (
     steering_committee,
     fee,
     fee_type,
+    rich_information_block
 )
 
 
@@ -45,6 +46,7 @@ from core.models import (
     special_session.SpecialSession,
     fee.Fee,
     fee_type.FeeType,
+    rich_information_block.RichInformationBlock
 )
 class UniversalAdmin(admin.ModelAdmin):
     def get_list_display(self, request):

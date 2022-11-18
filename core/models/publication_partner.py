@@ -12,7 +12,7 @@ class PublicationPartner(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="publication_partners",
-        default=Conference.objects.first().pk,
+        blank=True, null=True,
     )
 
     # Org details

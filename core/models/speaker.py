@@ -12,7 +12,7 @@ class Speaker(models.Model):
         Conference,
         on_delete=models.CASCADE,
         related_name="speakers",
-        default=Conference.objects.first().pk,
+        blank=True, null=True,
     )
 
     # Org details

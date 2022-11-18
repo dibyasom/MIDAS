@@ -19,3 +19,4 @@ from .special_session import SpecialSession
 from .technical_program_committee import TechnicalProgramCommittee
 from .fee import Fee
 from .fee_type import FeeType
+from .rich_information_block import RichInformationBlock

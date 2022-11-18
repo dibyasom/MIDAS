@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import logging
 from pathlib import Path
 from os import environ
 import os
@@ -38,12 +39,44 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework.authtoken",
+    'markdownify.apps.MarkdownifyConfig',
     # Mixins
     "django_better_admin_arrayfield",
     # Add your modules here
     "core",
     "home",
 ]
+MARKDOWNIFY = {
+    "default": {
+        "WHITELIST_TAGS": [
+            'a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol', 'strong', 'ul', 'br', 'div',
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+        ],
+        "WHITELIST_ATTRS": [
+            'href',
+            'src',
+            'alt',
+        ],
+        "WHITELIST_STYLES": [
+            'color',
+            'font-weight',
+        ],
+        "LINKIFY_TEXT": {
+            "PARSE_URLS": True,
+
+            # Next key/value-pairs only have effect if "PARSE_URLS" is True
+            "PARSE_EMAIL": False,
+            "CALLBACKS": [],
+            "SKIP_TAGS": [],
+        }
+    }
+}
+
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -177,7 +210,6 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-import logging
 
 REQUEST_LOGGING_DATA_LOG_LEVEL = logging.INFO
 REQUEST_LOGGING_ENABLE_COLORIZE = False
